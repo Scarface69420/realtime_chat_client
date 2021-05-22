@@ -19,6 +19,7 @@ const Chat = () => {
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
   const [message, setMessage] = useState("");
+  const [users, setUsers] = useState("");
   const [messages, setMessages] = useState([]);
   const ENDPOINT = "localhost:5000";
 
@@ -39,11 +40,20 @@ const Chat = () => {
     };
   }, [ENDPOINT, window.location.search]);
 
+  // useEffect(() => {
+  //   socket.on("message", (message) => {
+  //     setMessages([...messages, message]);
+  //   });
+  // }, [messages]);
   useEffect(() => {
     socket.on("message", (message) => {
-      setMessages([...messages, message]);
+      setMessages((messages) => [...messages, message]);
     });
-  }, [messages]);
+
+    socket.on("roomData", ({ users }) => {
+      setUsers(users);
+    });
+  }, []);
 
   const sendMessage = (event) => {
     event.preventDefault();

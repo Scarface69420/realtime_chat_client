@@ -13,7 +13,7 @@ const TextContainer = ({ users }) => (
           💬
         </span>
       </h1>
-      <h2>
+      {/* <h2>
         Created with React, Express, Node and Socket.IO{" "}
         <span role='img' aria-label='emoji'>
           ❤️
@@ -24,7 +24,7 @@ const TextContainer = ({ users }) => (
         <span role='img' aria-label='emoji'>
           ⬅️
         </span>
-      </h2>
+      </h2> */}
     </div>
     {users ? (
       <div>
