@@ -5,6 +5,7 @@ import "./Chat.css";
 import InfoBar from "../InfoBar/InfoBar";
 import Input from "../Input/Input";
 import Messages from "../Messages/Messages.js";
+import TextContainer from "../TextContainer/TextContainer";
 
 let socket;
 
@@ -68,6 +69,7 @@ const Chat = () => {
           onKeyPress={(e) => (e.key === "Enter" ? sendMessage(e) : null)}
         /> */}
       </div>
+      <TextContainer users={users} />
     </div>
   );
 };
