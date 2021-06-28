@@ -6,6 +6,7 @@ import InfoBar from "../InfoBar/InfoBar";
 import Input from "../Input/Input";
 import Messages from "../Messages/Messages.js";
 import TextContainer from "../TextContainer/TextContainer";
+import { useHistory } from "react-router-dom";
 
 let socket;
 
@@ -23,6 +24,8 @@ const Chat = () => {
   const [messages, setMessages] = useState([]);
   const ENDPOINT = "localhost:5000";
 
+  let history = useHistory();
+
   useEffect(() => {
     const { name, room } = queryString.parse(window.location.search);
 
@@ -31,13 +34,12 @@ const Chat = () => {
     setName(name);
     setRoom(room);
 
-    socket.emit("join", { name, room }, () => {});
-
-    return () => {
-      socket.emit("disconnect");
-
-      socket.off();
-    };
+    socket.emit("join", { name, room }, (error) => {
+      if (error) {
+        alert(error);
+        history.goBack();
+      }
+    });
   }, [ENDPOINT, window.location.search]);
 
   // useEffect(() => {
