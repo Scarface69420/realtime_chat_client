@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Realtime-chat-server : [Server source code](https://github.com/Scarface69420/chat_app_server)
+
 ## Available Scripts
 
 In the project directory, you can run:
